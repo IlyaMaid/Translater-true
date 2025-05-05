@@ -1,1 +1,2 @@
-web: python Translayter.py
+aiogram==3.*
+googletrans==4.0.0rc1
