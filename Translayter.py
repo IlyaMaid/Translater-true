@@ -93,6 +93,8 @@ async def set_commands(bot: Bot):
 async def main():
     print("Настройка команд бота...")
     await set_commands(bot)
+    print("Удаление вебхука...")
+    await bot.delete_webhook(drop_pending_updates=True)  # Фикс конфликта
     print("Начало опроса...")
     try:
         await dp.start_polling(bot)
@@ -100,6 +102,5 @@ async def main():
         await bot.session.close()  # Закрытие сессии aiohttp
         print("Сессия бота закрыта.")
 
-
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(main())  # ✅ Запуск асинхронной функции main()
